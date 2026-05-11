@@ -10,9 +10,21 @@ import {
   FACILITY_EMAIL,
   FACILITY_HOURS,
   FACILITY_PHONE,
-  INQUIRY_TYPES,
-  SERVICE_PARAM_MAP,
 } from '../../lib/constants'
+
+const INQUIRY_TYPES = [
+  "Bay Rental",
+  "Custom Fabrication",
+  "Professional Services",
+  "Vehicle Storage",
+  "General Inquiry",
+]
+
+const SERVICE_PARAM_MAP: Record<string, string> = {
+  fabrication: "Custom Fabrication",
+  professional: "Professional Services",
+  storage: "Vehicle Storage",
+}
 
 const schema = z.object({
   name: z.string().min(2, 'Name is required'),
@@ -67,7 +79,7 @@ export function ContactSection({ service }: ContactSectionProps) {
           {/* Contact info */}
           <div className="flex flex-col gap-6">
             <div>
-              <h2 className="text-sm font-semibold text-[#f5f5f5] uppercase tracking-widest mb-4">Contact Info</h2>
+              <h2 className="text-sm font-semibold text-pitbox-text uppercase tracking-widest mb-4">Contact Info</h2>
               <div className="space-y-4">
                 {[
                   {
@@ -113,17 +125,17 @@ export function ContactSection({ service }: ContactSectionProps) {
                   },
                 ].map((item) => (
                   <div key={item.label} className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-[#C9A84C]/10 text-[#C9A84C] rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-8 h-8 bg-pitbox-amber/10 text-pitbox-amber rounded-lg flex items-center justify-center shrink-0 mt-0.5">
                       {item.icon}
                     </div>
                     <div>
-                      <p className="text-xs text-[#525252] mb-0.5">{item.label}</p>
+                      <p className="text-xs text-pitbox-subtle mb-0.5">{item.label}</p>
                       {item.href ? (
-                        <a href={item.href} className="text-sm text-[#a3a3a3] hover:text-[#C9A84C] transition-colors">
+                        <a href={item.href} className="text-sm text-pitbox-muted hover:text-pitbox-amber transition-colors">
                           {item.value}
                         </a>
                       ) : (
-                        <p className="text-sm text-[#a3a3a3]">{item.value}</p>
+                        <p className="text-sm text-pitbox-muted">{item.value}</p>
                       )}
                     </div>
                   </div>
@@ -141,8 +153,8 @@ export function ContactSection({ service }: ContactSectionProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold text-[#f5f5f5]">Message sent</h3>
-                <p className="text-sm text-[#525252]">We'll get back to you within 24 hours.</p>
+                <h3 className="text-lg font-semibold text-pitbox-text">Message sent</h3>
+                <p className="text-sm text-pitbox-subtle">We'll get back to you within 24 hours.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
@@ -150,13 +162,13 @@ export function ContactSection({ service }: ContactSectionProps) {
                 <Input label="Email" type="email" placeholder="john@example.com" error={errors.email?.message} {...register('email')} />
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-sm font-medium text-[#f5f5f5]">I'm inquiring about</label>
+                  <label className="text-sm font-medium text-pitbox-text">I'm inquiring about</label>
                   <select
-                    className="w-full px-4 py-2.5 rounded-lg bg-[#1a1a1a] border border-[#333] text-[#f5f5f5] focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/50 focus:border-[#C9A84C]/60 transition-colors"
+                    className="w-full px-4 py-2.5 rounded-lg bg-pitbox-surface-2 border border-pitbox-border-2 text-pitbox-text focus:outline-none focus:ring-2 focus:ring-pitbox-amber/50 focus:border-pitbox-amber/60 transition-colors"
                     {...register('inquiryType')}
                     defaultValue=""
                   >
-                    <option value="" disabled className="text-[#525252]">Select inquiry type…</option>
+                    <option value="" disabled className="text-pitbox-subtle">Select inquiry type…</option>
                     {INQUIRY_TYPES.map((t) => (
                       <option key={t} value={t}>{t}</option>
                     ))}
@@ -165,11 +177,11 @@ export function ContactSection({ service }: ContactSectionProps) {
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-sm font-medium text-[#f5f5f5]">Message</label>
+                  <label className="text-sm font-medium text-pitbox-text">Message</label>
                   <textarea
                     rows={5}
                     placeholder="Tell us what you need..."
-                    className="w-full px-4 py-2.5 rounded-lg bg-[#1a1a1a] border border-[#333] text-[#f5f5f5] placeholder:text-[#525252] focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/50 focus:border-[#C9A84C]/60 transition-colors resize-none"
+                    className="w-full px-4 py-2.5 rounded-lg bg-pitbox-surface-2 border border-pitbox-border-2 text-pitbox-text placeholder:text-pitbox-subtle focus:outline-none focus:ring-2 focus:ring-pitbox-amber/50 focus:border-pitbox-amber/60 transition-colors resize-none"
                     {...register('message')}
                   />
                   {errors.message && <p className="text-xs text-red-400">{errors.message.message}</p>}

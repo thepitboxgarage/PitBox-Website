@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
-import { ACUITY_OWNER_ID } from '../../lib/constants'
+
+const ACUITY_OWNER_ID = "39248460"
 
 export function ScheduleEmbed() {
   useEffect(() => {
@@ -13,7 +14,7 @@ export function ScheduleEmbed() {
   }, [])
 
   return (
-    <div className="rounded-xl overflow-hidden border border-[#262626]">
+    <div className="rounded-xl overflow-hidden border border-pitbox-border">
       <iframe
         src={`https://app.acuityscheduling.com/schedule.php?owner=${ACUITY_OWNER_ID}&ref=embedded_csp`}
         title="Schedule Appointment"

@@ -1,8 +1,21 @@
 import { Link, useRouterState } from '@tanstack/react-router'
 import { useState, useEffect } from 'react'
 import { Button } from '../ui/Button'
-import { NAV_LINKS } from '../../lib/constants'
 import logoImg from '../../assets/images/logo.png'
+
+const NAV_LINKS = [
+  { to: "/bays", label: "The Bays" },
+  { to: "/services", label: "Services" },
+  { to: "/about", label: "About" },
+  { to: "/contact", label: "Contact" },
+]
+
+function scrollToTopIfCurrent(e: React.MouseEvent, to: string, pathname: string) {
+  if (pathname === to || (to === '/' && pathname === '/')) {
+    e.preventDefault()
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+}
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -27,13 +40,13 @@ export function Navbar() {
         fixed top-0 left-0 right-0 z-50
         transition-colors duration-300
         border-b
-        ${scrolled ? 'bg-[#0a0a0a]/95 backdrop-blur-md border-[#1a1a1a]' : 'bg-transparent border-transparent'}
+        ${scrolled ? 'bg-pitbox-black/95 backdrop-blur-md border-pitbox-surface-2' : 'bg-transparent border-transparent'}
       `.trim()}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center group">
+          <Link to="/" className="flex items-center group" onClick={(e) => scrollToTopIfCurrent(e, '/', pathname)}>
             <img
               src={logoImg}
               alt="The Pit Box"
@@ -47,9 +60,10 @@ export function Navbar() {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`text-sm font-medium transition-colors hover:text-[#C9A84C] ${
-                  pathname === link.to ? 'text-[#C9A84C]' : 'text-[#d4d4d4]'
+                className={`text-sm font-medium transition-colors hover:text-pitbox-amber ${
+                  pathname === link.to ? 'text-pitbox-amber' : 'text-[#d4d4d4]'
                 }`}
+                onClick={(e) => scrollToTopIfCurrent(e, link.to, pathname)}
               >
                 {link.label}
               </Link>
@@ -65,7 +79,7 @@ export function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 text-[#d4d4d4] hover:text-[#f5f5f5] transition-colors"
+            className="md:hidden p-2 text-[#d4d4d4] hover:text-pitbox-text transition-colors"
             onClick={() => setMobileOpen((o) => !o)}
             aria-label="Toggle menu"
           >
@@ -84,7 +98,7 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-[#0a0a0a]/98 backdrop-blur-md border-b border-[#1a1a1a]">
+        <div className="md:hidden bg-pitbox-black/98 backdrop-blur-md border-b border-pitbox-surface-2">
           <div className="px-4 pb-4 pt-2 flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
               <Link
@@ -92,14 +106,15 @@ export function Navbar() {
                 to={link.to}
                 className={`px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                   pathname === link.to
-                    ? 'text-[#C9A84C] bg-[#C9A84C]/10'
-                    : 'text-[#d4d4d4] hover:text-[#f5f5f5] hover:bg-[#1a1a1a]'
+                    ? 'text-pitbox-amber bg-pitbox-amber/10'
+                    : 'text-[#d4d4d4] hover:text-pitbox-text hover:bg-pitbox-surface-2'
                 }`}
+                onClick={(e) => scrollToTopIfCurrent(e, link.to, pathname)}
               >
                 {link.label}
               </Link>
             ))}
-            <div className="pt-2 border-t border-[#1a1a1a] mt-2">
+            <div className="pt-2 border-t border-pitbox-surface-2 mt-2">
               <Link to="/book" className="block">
                 <Button className="w-full" size="sm">Book a Bay</Button>
               </Link>

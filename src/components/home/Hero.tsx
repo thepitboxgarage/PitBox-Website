@@ -31,29 +31,29 @@ export function Hero() {
       />
 
       {/* Left gold accent line */}
-      <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#C9A84C]/50 to-transparent" />
+      <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-pitbox-amber/50 to-transparent" />
 
       {/* Content — left aligned */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 w-full">
         <div className="max-w-2xl lg:max-w-3xl">
 
           {/* Label */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#C9A84C]/10 border border-[#C9A84C]/25 rounded-full text-[#C9A84C] text-xs font-semibold uppercase tracking-widest mb-8">
-            <span className="w-1.5 h-1.5 bg-[#C9A84C] rounded-full animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-pitbox-amber/10 border border-pitbox-amber/25 rounded-full text-pitbox-amber text-xs font-semibold uppercase tracking-widest mb-8">
+            <span className="w-1.5 h-1.5 bg-pitbox-amber rounded-full animate-pulse" />
             Vancouver's Premium Garage Bay Experience
           </div>
 
           {/* Headline — Barlow Condensed display font */}
           <h1
-            className="font-display font-black uppercase leading-[0.88] tracking-tight text-[#f5f5f5] mb-5"
+            className="font-display font-black uppercase leading-[0.88] tracking-tight text-pitbox-text mb-5"
             style={{ fontSize: 'clamp(2.8rem, 6vw, 5rem)' }}
           >
             Your Bay.<br />
-            <span className="text-[#C9A84C]">Your Rules.</span>
+            <span className="text-pitbox-amber">Your Rules.</span>
           </h1>
 
           {/* Gold rule */}
-          <div className="w-20 h-0.5 bg-[#C9A84C] mb-7" />
+          <div className="w-20 h-0.5 bg-pitbox-amber mb-7" />
 
           {/* Sub */}
           <p className="text-lg text-[#d4d4d4] leading-relaxed mb-10 max-w-lg">
@@ -65,7 +65,7 @@ export function Hero() {
           <div className="flex flex-col sm:flex-row items-start gap-4">
             <Link to="/book">
               <Button size="lg">
-                Reserve Your Bay
+                Book a Bay
                 <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -88,7 +88,7 @@ export function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#a3a3a3] animate-bounce">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-pitbox-muted animate-bounce">
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
         </svg>

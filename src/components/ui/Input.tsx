@@ -12,7 +12,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="flex flex-col gap-1.5">
         {label && (
-          <label htmlFor={inputId} className="text-sm font-medium text-[#f5f5f5]">
+          <label htmlFor={inputId} className="text-sm font-medium text-pitbox-text">
             {label}
           </label>
         )}
@@ -21,17 +21,17 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           id={inputId}
           className={`
             w-full px-4 py-2.5 rounded-lg
-            bg-[#1a1a1a] border text-[#f5f5f5]
-            placeholder:text-[#525252]
-            focus:outline-none focus:ring-2 focus:ring-[#C9A84C]/50 focus:border-[#C9A84C]/60
+            bg-pitbox-surface-2 border text-pitbox-text
+            placeholder:text-pitbox-subtle
+            focus:outline-none focus:ring-2 focus:ring-pitbox-amber/50 focus:border-pitbox-amber/60
             transition-colors duration-150
             disabled:opacity-50 disabled:cursor-not-allowed
-            ${error ? 'border-red-500/60' : 'border-[#333]'}
+            ${error ? 'border-red-500/60' : 'border-pitbox-border-2'}
             ${className}
           `.trim()}
           {...props}
         />
-        {hint && !error && <p className="text-xs text-[#525252]">{hint}</p>}
+        {hint && !error && <p className="text-xs text-pitbox-subtle">{hint}</p>}
         {error && <p className="text-xs text-red-400">{error}</p>}
       </div>
     )

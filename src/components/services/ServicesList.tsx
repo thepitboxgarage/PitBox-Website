@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { Card, CardBody, CardFooter, CardHeader } from '../ui/Card'
 import { Button } from '../ui/Button'
+import { Reveal } from '../ui/Reveal'
 import customFabImg from '../../assets/images/custom-fab-work.jpg'
 import professionalServicesImg from '../../assets/images/professional-services.jpg'
 import carStorageImg from '../../assets/images/car-storage.jpg'
@@ -76,29 +77,30 @@ export function ServicesList() {
     <section className="py-16">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8">
-          {SERVICES.map((service) => (
-            <Card key={service.id} hover>
+          {SERVICES.map((service, i) => (
+            <Reveal key={service.id} delay={i * 100}>
+            <Card hover>
               <div className="overflow-hidden rounded-t-xl">
                 <img src={service.image} alt={service.imageAlt} className="w-full h-48 object-cover" />
               </div>
               <CardHeader>
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-[#C9A84C]/10 text-[#C9A84C] rounded-lg flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 bg-pitbox-amber/10 text-pitbox-amber rounded-lg flex items-center justify-center shrink-0">
                     {service.icon}
                   </div>
                   <div>
-                    <h2 className="text-lg font-bold text-[#f5f5f5]">{service.label}</h2>
-                    <p className="text-xs text-[#C9A84C] font-medium mt-0.5">{service.tagline}</p>
+                    <h2 className="text-lg font-bold text-pitbox-text">{service.label}</h2>
+                    <p className="text-xs text-pitbox-amber font-medium mt-0.5">{service.tagline}</p>
                   </div>
                 </div>
               </CardHeader>
               <CardBody className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <p className="text-sm text-[#a3a3a3] leading-relaxed">{service.description}</p>
+                <p className="text-sm text-pitbox-muted leading-relaxed">{service.description}</p>
                 <ul className="space-y-2">
                   {service.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm text-[#a3a3a3]">
+                    <li key={f} className="flex items-start gap-2 text-sm text-pitbox-muted">
                       <svg
-                        className="w-4 h-4 text-[#C9A84C] shrink-0 mt-0.5"
+                        className="w-4 h-4 text-pitbox-amber shrink-0 mt-0.5"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -119,6 +121,7 @@ export function ServicesList() {
                 </Link>
               </CardFooter>
             </Card>
+            </Reveal>
           ))}
         </div>
       </div>

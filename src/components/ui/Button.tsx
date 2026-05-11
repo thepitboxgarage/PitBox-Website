@@ -12,11 +12,11 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantClasses: Record<Variant, string> = {
   primary:
-    'bg-[#C9A84C] text-[#0a0a0a] font-semibold hover:bg-[#D4B866] active:bg-[#d97706] disabled:bg-[#C9A84C]/40 disabled:text-[#0a0a0a]/40',
+    'bg-pitbox-amber text-pitbox-black font-semibold hover:bg-pitbox-amber-light active:bg-pitbox-amber-dark disabled:bg-pitbox-amber/40 disabled:text-pitbox-black/40',
   secondary:
-    'bg-transparent border border-[#C9A84C] text-[#C9A84C] font-semibold hover:bg-[#C9A84C]/10 active:bg-[#C9A84C]/20 disabled:opacity-40',
+    'bg-transparent border border-pitbox-amber text-pitbox-amber font-semibold hover:bg-pitbox-amber/10 active:bg-pitbox-amber/20 disabled:opacity-40',
   ghost:
-    'bg-transparent text-[#a3a3a3] hover:text-[#f5f5f5] hover:bg-[#1a1a1a] disabled:opacity-40',
+    'bg-transparent text-pitbox-muted hover:text-pitbox-text hover:bg-pitbox-surface-2 disabled:opacity-40',
   danger:
     'bg-red-600 text-white font-semibold hover:bg-red-500 active:bg-red-700 disabled:opacity-40',
 }
@@ -41,7 +41,7 @@ export function Button({
       className={`
         inline-flex items-center justify-center gap-2
         transition-colors duration-150 cursor-pointer
-        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A84C]/50
+        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pitbox-amber/50
         disabled:cursor-not-allowed
         ${variantClasses[variant]}
         ${sizeClasses[size]}

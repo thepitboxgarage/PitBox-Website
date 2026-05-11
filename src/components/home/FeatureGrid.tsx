@@ -1,3 +1,5 @@
+import { Reveal } from '../ui/Reveal'
+
 const FEATURES = [
   {
     icon: (
@@ -65,30 +67,29 @@ export function FeatureGrid() {
   return (
     <section className="py-24 bg-[#0d0d0d]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <p className="text-[#C9A84C] text-xs font-semibold uppercase tracking-widest mb-3">
+        <Reveal className="text-center mb-16">
+          <p className="text-pitbox-amber text-xs font-semibold uppercase tracking-widest mb-3">
             Why PitBox
           </p>
-          <h2 className="font-display font-black uppercase text-[#f5f5f5]" style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', lineHeight: 1.1 }}>
+          <h2 className="font-display font-black uppercase text-pitbox-text" style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', lineHeight: 1.1 }}>
             Built for the serious enthusiast
           </h2>
           <p className="mt-4 text-[#737373] max-w-xl mx-auto">
             Everything you need to work on your vehicle the right way — without the overhead of owning your own shop.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {FEATURES.map((feat) => (
-            <div
-              key={feat.title}
-              className="group p-6 bg-gradient-to-b from-[#1a1a1a] to-[#141414] border border-[#2a2a2a] rounded-xl hover:border-[#C9A84C]/40 hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(201,168,76,0.08)] transition-all duration-200"
-            >
-              <div className="w-11 h-11 bg-[#C9A84C]/10 text-[#C9A84C] rounded-lg flex items-center justify-center mb-4 group-hover:bg-[#C9A84C]/20 transition-colors">
-                {feat.icon}
+          {FEATURES.map((feat, i) => (
+            <Reveal key={feat.title} delay={i * 75}>
+              <div className="group p-6 bg-gradient-to-b from-pitbox-surface-2 to-pitbox-surface border border-[#2a2a2a] rounded-xl hover:border-pitbox-amber/40 hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(201,168,76,0.08)] transition-all duration-200 h-full">
+                <div className="w-11 h-11 bg-pitbox-amber/10 text-pitbox-amber rounded-lg flex items-center justify-center mb-4 group-hover:bg-pitbox-amber/20 transition-colors">
+                  {feat.icon}
+                </div>
+                <h3 className="text-base font-semibold text-pitbox-text mb-2">{feat.title}</h3>
+                <p className="text-sm text-[#737373] leading-relaxed">{feat.description}</p>
               </div>
-              <h3 className="text-base font-semibold text-[#f5f5f5] mb-2">{feat.title}</h3>
-              <p className="text-sm text-[#737373] leading-relaxed">{feat.description}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

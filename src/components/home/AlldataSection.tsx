@@ -1,3 +1,4 @@
+import { Reveal } from '../ui/Reveal'
 import alldataLogo from '../../assets/images/alldata-logo.jpg'
 
 const ALLDATA_FEATURES = [
@@ -41,15 +42,14 @@ const ALLDATA_FEATURES = [
 
 export function AlldataSection() {
   return (
-    <section className="py-24 bg-[#0a0a0a] border-t border-[#1a1a1a]">
+    <section className="py-24 bg-pitbox-black border-t border-pitbox-surface-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-          {/* Text side */}
-          <div>
-            <p className="text-[#C9A84C] text-xs font-semibold uppercase tracking-widest mb-3">Powered by ALLDATA</p>
+          <Reveal>
+            <p className="text-pitbox-amber text-xs font-semibold uppercase tracking-widest mb-3">Powered by ALLDATA</p>
             <h2
-              className="font-display font-black uppercase text-[#f5f5f5] mb-6"
+              className="font-display font-black uppercase text-pitbox-text mb-6"
               style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', lineHeight: 1.1 }}
             >
               The same data pros rely on,<br />at your fingertips.
@@ -61,24 +61,25 @@ export function AlldataSection() {
               display so you have the right information exactly when you need it.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {ALLDATA_FEATURES.map((feat) => (
-                <div key={feat.title} className="flex items-start gap-3">
-                  <div className="w-9 h-9 bg-[#C9A84C]/10 text-[#C9A84C] rounded-lg flex items-center justify-center shrink-0 mt-0.5">
-                    {feat.icon}
+              {ALLDATA_FEATURES.map((feat, i) => (
+                <Reveal key={feat.title} delay={i * 75}>
+                  <div className="flex items-start gap-3">
+                    <div className="w-9 h-9 bg-pitbox-amber/10 text-pitbox-amber rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+                      {feat.icon}
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-pitbox-text mb-1">{feat.title}</p>
+                      <p className="text-xs text-[#737373] leading-relaxed">{feat.body}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm font-semibold text-[#f5f5f5] mb-1">{feat.title}</p>
-                    <p className="text-xs text-[#737373] leading-relaxed">{feat.body}</p>
-                  </div>
-                </div>
+                </Reveal>
               ))}
             </div>
-          </div>
+          </Reveal>
 
-          {/* Logo */}
-          <div className="rounded-xl overflow-hidden">
+          <Reveal delay={150} className="rounded-xl overflow-hidden">
             <img src={alldataLogo} alt="ALLDATA" className="w-full object-cover" />
-          </div>
+          </Reveal>
 
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
-import { CLEVERWAIVER_TEMPLATE_ID } from '../../lib/constants'
+
+const CLEVERWAIVER_TEMPLATE_ID = "6a00e18ba47d80b6f0879440"
 
 export function WaiverEmbed() {
   useEffect(() => {

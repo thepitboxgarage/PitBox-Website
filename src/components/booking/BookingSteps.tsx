@@ -11,9 +11,9 @@ function Step({ number, label, state, to }: StepProps) {
   const badge = (
     <div className="flex items-center gap-2.5 shrink-0">
       <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-colors ${
-        state === 'complete' ? 'bg-[#C9A84C]/20 text-[#C9A84C] border border-[#C9A84C]/40' :
-        state === 'active'   ? 'bg-[#C9A84C] text-[#0a0a0a]' :
-                               'bg-[#1a1a1a] text-[#525252] border border-[#262626]'
+        state === 'complete' ? 'bg-pitbox-amber/20 text-pitbox-amber border border-pitbox-amber/40' :
+        state === 'active'   ? 'bg-pitbox-amber text-pitbox-black' :
+                               'bg-pitbox-surface-2 text-pitbox-subtle border border-pitbox-border'
       }`}>
         {state === 'complete' ? (
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
@@ -22,9 +22,9 @@ function Step({ number, label, state, to }: StepProps) {
         ) : number}
       </div>
       <span className={`text-sm font-medium hidden sm:block ${
-        state === 'active' ? 'text-[#f5f5f5]' :
-        state === 'complete' ? 'text-[#C9A84C]' :
-        'text-[#525252]'
+        state === 'active' ? 'text-pitbox-text' :
+        state === 'complete' ? 'text-pitbox-amber' :
+        'text-pitbox-subtle'
       }`}>{label}</span>
     </div>
   )
@@ -48,14 +48,14 @@ export function BookingSteps({ current }: BookingStepsProps) {
         state={current > 1 ? 'complete' : 'active'}
         to="/book"
       />
-      <div className={`flex-1 h-px transition-colors ${current > 1 ? 'bg-[#C9A84C]/40' : 'bg-[#1f1f1f]'}`} />
+      <div className={`flex-1 h-px transition-colors ${current > 1 ? 'bg-pitbox-amber/40' : 'bg-[#1f1f1f]'}`} />
       <Step
         number={2}
         label="Sign Waiver"
         state={current > 2 ? 'complete' : current === 2 ? 'active' : 'upcoming'}
         to="/book/waiver"
       />
-      <div className={`flex-1 h-px transition-colors ${current > 2 ? 'bg-[#C9A84C]/40' : 'bg-[#1f1f1f]'}`} />
+      <div className={`flex-1 h-px transition-colors ${current > 2 ? 'bg-pitbox-amber/40' : 'bg-[#1f1f1f]'}`} />
       <Step
         number={3}
         label="Schedule Your Bay"
