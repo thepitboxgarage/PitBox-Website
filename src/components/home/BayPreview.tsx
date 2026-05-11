@@ -17,8 +17,8 @@ export function BayPreview() {
             </h2>
             <p className="text-[#737373] leading-relaxed mb-6">
               Each of our {BAY_COUNT} bays is identical — 320 sq ft of clean, organized workspace
-              equipped with the same 30+ professional tools, the same full-size flatscreen interactive
-              manual system, and the same premium environment. No surprises.
+              equipped with the same 30+ professional tools, the same full-size flatscreen running
+              ALLDATA repair manuals, and the same premium environment. No surprises.
             </p>
             <ul className="flex flex-col gap-3 text-sm text-[#a3a3a3] mb-8">
               {BAY_FEATURES.map((item) => (

@@ -110,7 +110,7 @@ export const MANUAL_SYSTEM_FEATURES = [
   "Step-by-step illustrated service procedures",
   'Touch-enabled 55" 4K display',
   "Keyboard and wireless mouse included",
-  "Updated quarterly with new content",
+  "ALLDATA content updated continuously",
   "Searchable by VIN for exact fitment",
 ];
 
@@ -172,7 +172,7 @@ export const FAQ_ITEMS = [
 export const BAY_FEATURES = [
   "320 sq ft of dedicated workspace",
   "3-ton floor jack + 4 jack stands included",
-  '55" flatscreen with automotive manual catalog',
+  '55" flatscreen running ALLDATA repair manuals',
   "OBD-II scanner and digital multimeter",
   "Full hand tool, power tool & specialty kit",
   "Dedicated parts cleaning station",

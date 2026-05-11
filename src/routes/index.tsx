@@ -3,6 +3,7 @@ import { Hero } from '../components/home/Hero'
 import { StatsStrip } from '../components/home/StatsStrip'
 import { FeatureGrid } from '../components/home/FeatureGrid'
 import { BayPreview } from '../components/home/BayPreview'
+import { AlldataSection } from '../components/home/AlldataSection'
 import { PricingSection } from '../components/home/PricingSection'
 import { CTABanner } from '../components/home/CTABanner'
 import { LocationSection } from '../components/home/LocationSection'
@@ -18,6 +19,7 @@ function HomePage() {
       <StatsStrip />
       <FeatureGrid />
       <BayPreview />
+      <AlldataSection />
       <PricingSection />
       <CTABanner />
       <LocationSection />
