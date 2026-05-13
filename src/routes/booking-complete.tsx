@@ -1,10 +1,17 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
+import { useEffect } from 'react'
 
 export const Route = createFileRoute('/booking-complete')({
   component: BookingCompletePage,
 })
 
 function BookingCompletePage() {
+  useEffect(() => {
+    if (window.top && window.top !== window) {
+      window.top.location.href = '/booking-complete'
+    }
+  }, [])
+
   return (
     <>
       <style>{`
