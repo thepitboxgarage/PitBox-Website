@@ -29,10 +29,11 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileOpen(false)
   }, [pathname])
+
+  const solid = scrolled || mobileOpen
 
   return (
     <header
@@ -40,18 +41,14 @@ export function Navbar() {
         fixed top-0 left-0 right-0 z-50
         transition-colors duration-300
         border-b
-        ${scrolled ? 'bg-pitbox-black/95 backdrop-blur-md border-pitbox-surface-2' : 'bg-transparent border-transparent'}
+        ${solid ? 'bg-pitbox-black/95 backdrop-blur-md border-pitbox-surface-2' : 'bg-transparent border-transparent'}
       `.trim()}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center group" onClick={(e) => scrollToTopIfCurrent(e, '/', pathname)}>
-            <img
-              src={logoImg}
-              alt="The Pit Box"
-              className="h-14 w-auto"
-            />
+            <img src={logoImg} alt="The Pit Box" className="h-14 w-auto" />
           </Link>
 
           {/* Desktop nav */}
@@ -83,45 +80,39 @@ export function Navbar() {
             onClick={() => setMobileOpen((o) => !o)}
             aria-label="Toggle menu"
           >
-            {mobileOpen ? (
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
+            <div className="w-5 h-5 relative flex items-center justify-center">
+              <span className={`absolute block h-0.5 w-5 bg-current rounded-full transition-all duration-300 ${mobileOpen ? 'rotate-45' : '-translate-y-1.5'}`} />
+              <span className={`absolute block h-0.5 w-5 bg-current rounded-full transition-all duration-300 ${mobileOpen ? 'opacity-0 scale-x-0' : 'opacity-100'}`} />
+              <span className={`absolute block h-0.5 w-5 bg-current rounded-full transition-all duration-300 ${mobileOpen ? '-rotate-45' : 'translate-y-1.5'}`} />
+            </div>
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden bg-pitbox-black/98 backdrop-blur-md border-b border-pitbox-surface-2">
-          <div className="px-4 pb-4 pt-2 flex flex-col gap-1">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className={`px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                  pathname === link.to
-                    ? 'text-pitbox-amber bg-pitbox-amber/10'
-                    : 'text-[#d4d4d4] hover:text-pitbox-text hover:bg-pitbox-surface-2'
-                }`}
-                onClick={(e) => scrollToTopIfCurrent(e, link.to, pathname)}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <div className="pt-2 border-t border-pitbox-surface-2 mt-2">
-              <Link to="/book" className="block">
-                <Button className="w-full" size="sm">Book a Bay</Button>
-              </Link>
-            </div>
+      {/* Mobile menu — always in DOM, height animated */}
+      <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className="px-4 pb-5 pt-2 flex flex-col gap-1 border-t border-pitbox-surface-2">
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className={`px-3 py-3 rounded-lg text-sm font-medium transition-colors ${
+                pathname === link.to
+                  ? 'text-pitbox-amber bg-pitbox-amber/10'
+                  : 'text-[#d4d4d4] hover:text-pitbox-text hover:bg-pitbox-surface-2'
+              }`}
+              onClick={(e) => scrollToTopIfCurrent(e, link.to, pathname)}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <div className="pt-3 mt-1 border-t border-pitbox-surface-2">
+            <Link to="/book" className="block">
+              <Button className="w-full" size="sm">Book a Bay</Button>
+            </Link>
           </div>
         </div>
-      )}
+      </div>
     </header>
   )
 }
