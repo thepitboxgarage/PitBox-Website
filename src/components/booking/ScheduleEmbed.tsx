@@ -1,8 +1,21 @@
 import { useEffect } from 'react'
+import { useNavigate } from '@tanstack/react-router'
 
 const ACUITY_OWNER_ID = "39248460"
 
 export function ScheduleEmbed() {
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const handler = (e: MessageEvent) => {
+      if (e.data?.type === 'acuity_confirmed') {
+        navigate({ to: '/book/manual' })
+      }
+    }
+    window.addEventListener('message', handler)
+    return () => window.removeEventListener('message', handler)
+  }, [navigate])
+
   useEffect(() => {
     const script = document.createElement('script')
     script.src = 'https://embed.acuityscheduling.com/js/embed.js'

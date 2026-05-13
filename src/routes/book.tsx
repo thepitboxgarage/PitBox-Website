@@ -8,8 +8,8 @@ export const Route = createFileRoute('/book')({
 function BookLayout() {
   const { location } = useRouterState()
   const step: 1 | 2 | 3 =
-    location.pathname.startsWith('/book/schedule') ? 3 :
-    location.pathname.startsWith('/book/waiver') ? 2 :
+    location.pathname.startsWith('/book/waiver') ? 3 :
+    location.pathname.startsWith('/book/manual') ? 2 :
     1
 
   return (

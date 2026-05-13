@@ -11,13 +11,14 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as BookingCompleteRouteImport } from './routes/booking-complete'
 import { Route as BookRouteImport } from './routes/book'
 import { Route as BaysRouteImport } from './routes/bays'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BookIndexRouteImport } from './routes/book.index'
 import { Route as BookWaiverRouteImport } from './routes/book.waiver'
-import { Route as BookScheduleRouteImport } from './routes/book.schedule'
+import { Route as BookManualRouteImport } from './routes/book.manual'
 
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
@@ -27,6 +28,11 @@ const ServicesRoute = ServicesRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookingCompleteRoute = BookingCompleteRouteImport.update({
+  id: '/booking-complete',
+  path: '/booking-complete',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BookRoute = BookRouteImport.update({
@@ -59,9 +65,9 @@ const BookWaiverRoute = BookWaiverRouteImport.update({
   path: '/waiver',
   getParentRoute: () => BookRoute,
 } as any)
-const BookScheduleRoute = BookScheduleRouteImport.update({
-  id: '/schedule',
-  path: '/schedule',
+const BookManualRoute = BookManualRouteImport.update({
+  id: '/manual',
+  path: '/manual',
   getParentRoute: () => BookRoute,
 } as any)
 
@@ -70,9 +76,10 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/bays': typeof BaysRoute
   '/book': typeof BookRouteWithChildren
+  '/booking-complete': typeof BookingCompleteRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
-  '/book/schedule': typeof BookScheduleRoute
+  '/book/manual': typeof BookManualRoute
   '/book/waiver': typeof BookWaiverRoute
   '/book/': typeof BookIndexRoute
 }
@@ -80,9 +87,10 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/bays': typeof BaysRoute
+  '/booking-complete': typeof BookingCompleteRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
-  '/book/schedule': typeof BookScheduleRoute
+  '/book/manual': typeof BookManualRoute
   '/book/waiver': typeof BookWaiverRoute
   '/book': typeof BookIndexRoute
 }
@@ -92,9 +100,10 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/bays': typeof BaysRoute
   '/book': typeof BookRouteWithChildren
+  '/booking-complete': typeof BookingCompleteRoute
   '/contact': typeof ContactRoute
   '/services': typeof ServicesRoute
-  '/book/schedule': typeof BookScheduleRoute
+  '/book/manual': typeof BookManualRoute
   '/book/waiver': typeof BookWaiverRoute
   '/book/': typeof BookIndexRoute
 }
@@ -105,9 +114,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/bays'
     | '/book'
+    | '/booking-complete'
     | '/contact'
     | '/services'
-    | '/book/schedule'
+    | '/book/manual'
     | '/book/waiver'
     | '/book/'
   fileRoutesByTo: FileRoutesByTo
@@ -115,9 +125,10 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/bays'
+    | '/booking-complete'
     | '/contact'
     | '/services'
-    | '/book/schedule'
+    | '/book/manual'
     | '/book/waiver'
     | '/book'
   id:
@@ -126,9 +137,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/bays'
     | '/book'
+    | '/booking-complete'
     | '/contact'
     | '/services'
-    | '/book/schedule'
+    | '/book/manual'
     | '/book/waiver'
     | '/book/'
   fileRoutesById: FileRoutesById
@@ -138,6 +150,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   BaysRoute: typeof BaysRoute
   BookRoute: typeof BookRouteWithChildren
+  BookingCompleteRoute: typeof BookingCompleteRoute
   ContactRoute: typeof ContactRoute
   ServicesRoute: typeof ServicesRoute
 }
@@ -156,6 +169,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/booking-complete': {
+      id: '/booking-complete'
+      path: '/booking-complete'
+      fullPath: '/booking-complete'
+      preLoaderRoute: typeof BookingCompleteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/book': {
@@ -200,24 +220,24 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BookWaiverRouteImport
       parentRoute: typeof BookRoute
     }
-    '/book/schedule': {
-      id: '/book/schedule'
-      path: '/schedule'
-      fullPath: '/book/schedule'
-      preLoaderRoute: typeof BookScheduleRouteImport
+    '/book/manual': {
+      id: '/book/manual'
+      path: '/manual'
+      fullPath: '/book/manual'
+      preLoaderRoute: typeof BookManualRouteImport
       parentRoute: typeof BookRoute
     }
   }
 }
 
 interface BookRouteChildren {
-  BookScheduleRoute: typeof BookScheduleRoute
+  BookManualRoute: typeof BookManualRoute
   BookWaiverRoute: typeof BookWaiverRoute
   BookIndexRoute: typeof BookIndexRoute
 }
 
 const BookRouteChildren: BookRouteChildren = {
-  BookScheduleRoute: BookScheduleRoute,
+  BookManualRoute: BookManualRoute,
   BookWaiverRoute: BookWaiverRoute,
   BookIndexRoute: BookIndexRoute,
 }
@@ -229,6 +249,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   BaysRoute: BaysRoute,
   BookRoute: BookRouteWithChildren,
+  BookingCompleteRoute: BookingCompleteRoute,
   ContactRoute: ContactRoute,
   ServicesRoute: ServicesRoute,
 }

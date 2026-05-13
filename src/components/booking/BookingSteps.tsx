@@ -44,21 +44,21 @@ export function BookingSteps({ current }: BookingStepsProps) {
     <div className="flex items-center gap-4">
       <Step
         number={1}
-        label="Read Manual"
+        label="Schedule"
         state={current > 1 ? 'complete' : 'active'}
         to="/book"
       />
       <div className={`flex-1 h-px transition-colors ${current > 1 ? 'bg-pitbox-amber/40' : 'bg-[#1f1f1f]'}`} />
       <Step
         number={2}
-        label="Sign Waiver"
+        label="Read Manual"
         state={current > 2 ? 'complete' : current === 2 ? 'active' : 'upcoming'}
-        to="/book/waiver"
+        to="/book/manual"
       />
       <div className={`flex-1 h-px transition-colors ${current > 2 ? 'bg-pitbox-amber/40' : 'bg-[#1f1f1f]'}`} />
       <Step
         number={3}
-        label="Schedule Your Bay"
+        label="Sign Waiver"
         state={current === 3 ? 'active' : 'upcoming'}
       />
     </div>
