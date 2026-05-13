@@ -3,7 +3,7 @@ import { Reveal } from '../ui/Reveal'
 
 export function CTABanner() {
   return (
-    <section className="py-24 bg-[#0d0d0d]">
+    <section className="hidden md:block py-24 bg-[#0d0d0d]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-2xl border border-pitbox-amber/25 px-8 py-20 text-center"
           style={{

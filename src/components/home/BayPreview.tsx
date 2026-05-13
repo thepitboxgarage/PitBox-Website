@@ -43,7 +43,7 @@ export function BayPreview() {
                 <img
                   src={shopBaysImg}
                   alt="PitBox garage bays"
-                  className="w-full h-96 object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                  className="w-full h-56 md:h-96 object-cover group-hover:scale-[1.02] transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-pitbox-black/70 via-transparent to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between">

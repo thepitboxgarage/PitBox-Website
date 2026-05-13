@@ -1,3 +1,5 @@
+import { useState, useCallback, useEffect } from 'react'
+import useEmblaCarousel from 'embla-carousel-react'
 import { Reveal } from '../ui/Reveal'
 
 const FEATURES = [
@@ -63,6 +65,57 @@ const FEATURES = [
   },
 ]
 
+function FeatureCard({ feat }: { feat: typeof FEATURES[number] }) {
+  return (
+    <div className="group p-6 bg-gradient-to-b from-pitbox-surface-2 to-pitbox-surface border border-[#2a2a2a] rounded-xl hover:border-pitbox-amber/40 hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(201,168,76,0.08)] transition-all duration-200 h-full">
+      <div className="w-11 h-11 bg-pitbox-amber/10 text-pitbox-amber rounded-lg flex items-center justify-center mb-4 group-hover:bg-pitbox-amber/20 transition-colors">
+        {feat.icon}
+      </div>
+      <h3 className="text-base font-semibold text-pitbox-text mb-2">{feat.title}</h3>
+      <p className="text-sm text-[#737373] leading-relaxed">{feat.description}</p>
+    </div>
+  )
+}
+
+function FeatureCarousel() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
+  const [current, setCurrent] = useState(0)
+
+  const onSelect = useCallback(() => {
+    if (emblaApi) setCurrent(emblaApi.selectedScrollSnap())
+  }, [emblaApi])
+
+  useEffect(() => {
+    if (!emblaApi) return
+    emblaApi.on('select', onSelect)
+    return () => { emblaApi.off('select', onSelect) }
+  }, [emblaApi, onSelect])
+
+  return (
+    <div>
+      <div ref={emblaRef} className="overflow-hidden">
+        <div className="flex">
+          {FEATURES.map((feat) => (
+            <div key={feat.title} className="min-w-0 flex-[0_0_100%] px-1">
+              <FeatureCard feat={feat} />
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="flex justify-center gap-2 mt-5">
+        {FEATURES.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => emblaApi?.scrollTo(i)}
+            className={`h-1.5 rounded-full transition-all duration-200 ${i === current ? 'w-6 bg-pitbox-amber' : 'w-1.5 bg-[#2a2a2a]'}`}
+            aria-label={`Slide ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export function FeatureGrid() {
   return (
     <section className="py-24 bg-[#0d0d0d]">
@@ -79,16 +132,16 @@ export function FeatureGrid() {
           </p>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Mobile: carousel */}
+        <div className="md:hidden">
+          <FeatureCarousel />
+        </div>
+
+        {/* Desktop: grid */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {FEATURES.map((feat, i) => (
             <Reveal key={feat.title} delay={i * 75}>
-              <div className="group p-6 bg-gradient-to-b from-pitbox-surface-2 to-pitbox-surface border border-[#2a2a2a] rounded-xl hover:border-pitbox-amber/40 hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(201,168,76,0.08)] transition-all duration-200 h-full">
-                <div className="w-11 h-11 bg-pitbox-amber/10 text-pitbox-amber rounded-lg flex items-center justify-center mb-4 group-hover:bg-pitbox-amber/20 transition-colors">
-                  {feat.icon}
-                </div>
-                <h3 className="text-base font-semibold text-pitbox-text mb-2">{feat.title}</h3>
-                <p className="text-sm text-[#737373] leading-relaxed">{feat.description}</p>
-              </div>
+              <FeatureCard feat={feat} />
             </Reveal>
           ))}
         </div>
