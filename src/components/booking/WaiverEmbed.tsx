@@ -7,7 +7,7 @@ export function WaiverEmbed() {
     const handleScroll = () => {
       const ifr = document.getElementById('ifr_template') as HTMLIFrameElement
       if (!ifr) return
-      const s = document.documentElement.scrollTop || document.body.scrollTop - ifr.offsetTop
+      const s = (document.documentElement.scrollTop || document.body.scrollTop) - ifr.offsetTop
       const h = window.innerHeight
       ifr.contentWindow?.postMessage(
         { type: 'ifr_scroll', scrollTop: s, innerHeight: h },
