@@ -6,7 +6,7 @@ const BAY_MANUAL_FEATURES = [
   "OEM torque specs",
   "Wiring diagrams",
   "VIN search",
-  "Touch + keyboard control",
+  "mouse + keyboard control",
   "Updated quarterly",
 ]
 
@@ -29,7 +29,7 @@ export function BayManualSystem() {
               The same system used by professional shops. In your bay.
             </h2>
             <p className="text-pitbox-muted leading-relaxed mb-6 text-sm">
-              Every bay includes a 55" 4K touchscreen running ALLDATA — the
+              Every bay includes a full size flat screen running ALLDATA — the
               industry-standard OEM repair database trusted by dealerships and
               independent shops. Search across 10,000+ vehicle combinations for
               factory-spec service procedures, torque tables, wiring diagrams,

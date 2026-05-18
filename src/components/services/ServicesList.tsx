@@ -14,13 +14,13 @@ const SERVICES = [
     image: customFabImg,
     imageAlt: 'Custom fabrication work',
     description:
-      'Our on-site Red Seal technician can design and fabricate custom exhaust systems, headers, manifolds, brackets, and one-off metalwork for any build. From concept to weld, we work with you through every step.',
+      'Our on-site fabrication technician can design and fabricate custom exhaust systems, headers, manifolds, brackets, and one-off performance modifications for any build. From concept to completion, we work with you through every step.',
     features: [
       'Cat-back & full exhaust systems',
       'Headers & exhaust manifolds',
       'Custom brackets, mounts & chassis work',
-      'Stainless steel & mild steel',
-      'Free consultation before any quote',
+      'Stainless steel, mild steel & aluminum',
+      'Free consultation and quotes',
     ],
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -58,11 +58,11 @@ const SERVICES = [
     description:
       'Store your vehicle in our secure facility on one of four dedicated lift slots at the rear of the shop. Perfect for classic cars, track builds, motorcycles, or anything you want protected over the winter months.',
     features: [
-      '4 slots on two indoor 2-post lifts',
+      '4 slots on a double wide 4 post storage hoist',
       '24/7 camera-monitored facility',
-      'Monthly & seasonal rates',
-      'Vehicle check-ins available on request',
+      'Monthly, seasonal & year round',
       'Easy drop-off & pick-up access',
+      'battery tenders available',
     ],
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>

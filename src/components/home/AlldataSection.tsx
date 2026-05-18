@@ -35,8 +35,8 @@ const ALLDATA_FEATURES = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125z" />
       </svg>
     ),
-    title: '55" 4K Touchscreen',
-    body: 'Every bay has a dedicated full-size display with touch, keyboard, and mouse — easy to navigate while your hands are in the engine bay.',
+    title: 'Full Size Flat Screen',
+    body: 'Every bay has a dedicated full-size display with keyboard and mouse — easy to see while your hands are in the engine bay.',
   },
 ]
 
@@ -57,8 +57,7 @@ export function AlldataSection() {
             <p className="text-[#737373] leading-relaxed mb-10 text-sm max-w-lg">
               ALLDATA is the automotive industry's leading OEM repair database —
               used by over 400,000 professional technicians at dealerships and
-              independent shops. Every PitBox bay has it mounted on a 55" 4K
-              display so you have the right information exactly when you need it.
+              independent shops. Every Pit Box bay has it mounted on a flat screen monitor so you have the right information exactly when you need it.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {ALLDATA_FEATURES.map((feat, i) => (

@@ -14,14 +14,14 @@ const PRICING: Record<Duration, DurationOption> = {
     key: "half-day",
     label: "Half-Day",
     duration: 240,
-    price: 320,
+    price: 325,
     description: "6 hours — tackle a full service",
   },
   "full-day": {
     key: "full-day",
     label: "Full-Day",
     duration: 540,
-    price: 550,
+    price: 650,
     description: "12 hours — full day access, 9 AM – 9 PM",
   },
 }

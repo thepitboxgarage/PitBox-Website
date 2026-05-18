@@ -4,7 +4,7 @@ import { useCountUp } from '../ui/useCountUp'
 
 const STATS = [
   { num: 6, suffix: "", unit: "bays", label: "Premium Bays" },
-  { num: 30, suffix: "+", unit: "tools", label: "Tools Per Bay" },
+  { num: 1000, suffix: "+", unit: "tools", label: "Tools Per Bay" },
   { num: 320, suffix: "", unit: "sq ft", label: "Per Bay" },
   { num: 6, suffix: "", unit: "days", label: "Days a Week" },
 ]

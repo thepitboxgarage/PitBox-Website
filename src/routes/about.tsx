@@ -20,15 +20,20 @@ function AboutPage() {
             className="font-display font-black uppercase text-pitbox-text mb-6 text-center"
             style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1.05 }}
           >
-            A garage built for
-            <br />
-            <span className="text-pitbox-amber">people who care.</span>
+            Built by Enthusiasts.<br />
+            <span className="text-pitbox-amber">Built for the Community.</span>
           </h1>
-          <p className="text-lg text-pitbox-muted leading-relaxed max-w-2xl text-center mx-auto">
-            PitBox was born from a simple frustration: enthusiasts with the skill
-            and passion to work on their own vehicles, but no access to the
-            professional space and tools to do it right.
-          </p>
+          <div className="text-lg text-pitbox-muted leading-relaxed max-w-2xl text-center mx-auto space-y-4">
+            <p>
+              The Pit Box was created for the people who live and breathe car culture — enthusiasts, racers,
+              certified technicians, and builders who need more than a driveway to bring their projects to life.
+            </p>
+            <p>
+              What started as frustration with limited workspace, rising restrictions, and lack of access to
+              professional equipment became a vision for something bigger: a premium automotive workspace designed
+              around the community. A place to build, learn, connect, and keep the passion for cars alive.
+            </p>
+          </div>
         </div>
       </section>
       <AboutStory />

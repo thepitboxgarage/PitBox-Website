@@ -3,7 +3,7 @@ import { Reveal } from '../ui/Reveal'
 const FAQ_ITEMS = [
   {
     q: "Do I need to bring my own tools?",
-    a: "No. Every bay comes fully equipped with 30+ professional tools. If you have a specialty tool you prefer, you're welcome to bring it.",
+    a: "No. Every bay comes fully equipped with 1000+ professional tools. If you have a specialty tool you prefer, you're welcome to bring it.",
   },
   {
     q: "Can I bring a friend to help?",
@@ -15,7 +15,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Do you have a lift (hoist)?",
-    a: "We currently offer floor jacks and jack stands. Hydraulic vehicle lifts are planned for a future expansion.",
+    a: "Yes, each bay is equipped with a 10,000LB 2 post hoist.",
   },
   {
     q: "Can I book same-day?",

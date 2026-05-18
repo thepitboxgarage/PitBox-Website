@@ -5,7 +5,7 @@ const MANUAL_SYSTEM_FEATURES = [
   "Covers 10,000+ vehicle make/model/year combinations",
   "OEM torque specs and fluid specifications",
   "Step-by-step illustrated service procedures",
-  'Touch-enabled 55" 4K display',
+  'flat screen monitor',
   "Keyboard and wireless mouse included",
   "ALLDATA content updated continuously",
   "Searchable by VIN for exact fitment",
@@ -27,7 +27,7 @@ export function AboutManualSystem() {
               Professional-grade repair data. In every bay.
             </h2>
             <p className="text-pitbox-muted text-sm leading-relaxed mb-6">
-              Every bay includes a 55-inch flatscreen running ALLDATA — the OEM repair database
+              Every bay includes a full size flatscreen running ALLDATA — the OEM repair database
               trusted by dealerships and professional shops across North America. Factory specs,
               wiring diagrams, and step-by-step procedures, exactly when you need them.
             </p>

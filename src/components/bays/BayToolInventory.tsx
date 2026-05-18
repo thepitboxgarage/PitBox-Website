@@ -2,22 +2,21 @@ import { ToolCarousel } from './ToolCarousel'
 import { Reveal } from '../ui/Reveal'
 
 const BAY_TOOL_LIST = [
-  "3-ton floor jack + 4 jack stands",
+  "3-ton floor jack + jack stands",
   "Socket & ratchet set — metric & imperial",
   "Combination wrench set — metric & imperial",
-  'Torque wrench — ¼", ⅜", ½" drive',
-  'Impact wrench — ½" & ¾" drive',
+  'Torque wrench — ½" drive',
+  'Impact wrench — 3/8" & 1/2" drive',
   'Breaker bar — ½" drive',
-  "Pry bars & slide hammer",
+  "Pry bars",
   "Ball-peen & rubber mallets",
   "Pliers, cutters & locking pliers",
   "Screwdriver set — flat & Phillips",
   "Hex key set — metric & imperial",
-  "OBD-II diagnostic scanner",
   "Digital multimeter",
-  "Oil drain pan & filter wrench set",
+  "oil drain pan",
   "Brake caliper wind-back tool kit",
-  "Parts cleaning station",
+  "access to specialty tool kits and scan tools",
 ]
 
 export function BayToolInventory() {

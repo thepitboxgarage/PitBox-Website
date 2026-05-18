@@ -24,7 +24,7 @@ function BaysPage() {
           </h1>
           <p className="mt-3 text-pitbox-muted text-center max-w-xl mx-auto">
             Every bay is identical — same tools, same space, same quality.
-            Pick any available slot and get to work.
+            Book an available slot and get to work.
           </p>
         </div>
       </section>
@@ -46,9 +46,9 @@ function BaysPage() {
               </h2>
               <p className="text-pitbox-muted text-sm leading-relaxed mb-6">
                 Each of our {BAY_COUNT} bays is a 320 sq ft, fully organized
-                workspace. Epoxy floors, high-bay LED lighting, a dedicated
-                parts cleaning station, and 30+ professional tools — all
-                included from the moment your rental begins.
+                workspace. Epoxy floors, high-bay LED lighting, and 1000+
+                professional tools — all included from the moment your rental
+                begins.
               </p>
               <ul className="flex flex-col gap-3">
                 {BAY_FEATURES.map((item) => (

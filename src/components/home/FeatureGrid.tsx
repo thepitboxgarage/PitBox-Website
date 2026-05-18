@@ -11,7 +11,7 @@ const FEATURES = [
     ),
     title: 'Professional Tool Suite',
     description:
-      'Every bay comes stocked with 30+ professional-grade tools — from impact wrenches and torque wrenches to OBD-II scanners and bearing presses.',
+      'Every bay comes stocked with 1000+ professional-grade tools. Access to impact and electric tools, diagnostic scanners, and 50+ specialty tools.',
   },
   {
     icon: (
@@ -21,7 +21,7 @@ const FEATURES = [
     ),
     title: 'ALLDATA Repair Manuals',
     description:
-      'Each bay features a 55" flatscreen running ALLDATA — the same OEM repair database used by professional shops. Step-by-step procedures, torque specs, and wiring diagrams for 10,000+ vehicles.',
+      'Each bay features a flatscreen running ALLDATA — the same OEM repair database used by professional shops. Step-by-step procedures, torque specs, and wiring diagrams for 10,000+ vehicles.',
   },
   {
     icon: (
@@ -41,7 +41,7 @@ const FEATURES = [
     ),
     title: 'Safe & Supervised',
     description:
-      'Climate-controlled environment, full safety briefing on arrival, on-site staff during all operating hours, and first-aid certified team members.',
+      'Climate-controlled environment, full safety briefing on arrival, on-site staff during all operating hours.',
   },
   {
     icon: (
@@ -51,7 +51,7 @@ const FEATURES = [
     ),
     title: 'Premium Facility',
     description:
-      'High-bay LED lighting, epoxy-coated floors, dedicated parts cleaning stations, and a lounge with espresso — because the details matter.',
+      'High-bay LED lighting, epoxy-coated floors, professional-grade equipment, and a comfortable lounge space built for enthusiasts, certified technicians, racers, and builders who demand a professional environment to work on their vehicles.',
   },
   {
     icon: (
@@ -61,7 +61,7 @@ const FEATURES = [
     ),
     title: 'A Community of Enthusiasts',
     description:
-      'PitBox is more than a garage. Share knowledge, meet like-minded gearheads, and enjoy the culture of people who care about their cars.',
+      'The Pit Box is more than a shop — it\'s a hub for the automotive community. Share knowledge, connect with like-minded enthusiasts, racers, technicians, and builders, and be part of a culture built around a passion for cars.',
   },
 ]
 
