@@ -1,19 +1,47 @@
 import { useState } from 'react'
 import { Link } from '@tanstack/react-router'
 
-const MANUAL_SECTIONS = [
-  {
-    heading: 'Lift Operation',
-    body: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.`,
-  },
-  {
-    heading: 'Air Tools & Compressor',
-    body: `Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.`,
-  },
-  {
-    heading: 'Fluid Disposal & Bay Cleanup',
-    body: `Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt.`,
-  },
+const SHOP_RULES = [
+  'No smoking, drugs or alcohol in the shop.',
+  'Proper PPE is required for the task – gloves or eye-wear, as appropriate.',
+  'Once on a lift, you may raise or lower your vehicle.',
+  'Respect the work area of others.',
+  'Drain fluids in appropriate catch cans provided – petroleum-based fluids or glycol/anti-freeze.',
+  'Put away all tools and equipment in drawers and return any borrowed shop tools and equipment. Any missing tools or equipment will be charged to your bill.',
+  'Swearing at yourself is allowed. Swearing at others is not.',
+  'Use the proper tools and equipment for the task. If you don\'t know how something works, ask staff for help.',
+  'Be aware of surrounding environment – people, vehicles, equipment and tools.',
+  'Use aisles and walkways. Do not use shortcuts.',
+  'Clean up spills immediately and alert staff if you require assistance.',
+  'Oil filters are to be left in the catch can and will be disposed of by staff.',
+]
+
+const HOUSEKEEPING = [
+  'Clean any spills immediately. Ask for assistance if you need help.',
+  'Wipe and return tools to appropriate locations in tool box or to the staff to return to the tool room.',
+  'Wipe the work bench to clean any debris or fluids.',
+  'Place dirty rags in the rag collection hamper.',
+  'Sweep bay once you are done.',
+  'Place any trash, cardboard, or scrap metal in appropriate bins.',
+]
+
+const LIFT_TO_RAISE = [
+  'Keep operation site clean.',
+  'Lower the lifting arm to its lowest position.',
+  'Retract the lifting arm to the shortest position.',
+  'Open lifting arms out to the sides.',
+  'Move the vehicle between columns — the curved arm of the lift is the front.',
+  'Move the lifting arms to the vehicle\'s lifting points. Use the carrier adapter provided by the manufacturer. Swing the lifting arms under the vehicle, lift the vehicle lifting points as recommended by the vehicle manufacturer. If necessary, use the stackable extension adapter or optional saddle adapter to ensure good contact. All four lifting arms must simultaneously touch the vehicle.',
+  'Push UP button until the lifting pads contact the underside of the vehicle totally and recheck lifting points.',
+  'Continue to raise the lift slowly, ensure the balance of vehicle, lift the vehicle to the desired height, release the UP button.',
+  'Press the release handle on power unit to lower the lift to the safety lock position. The vehicle cannot be repaired unless the safety is in lock position.',
+]
+
+const LIFT_TO_LOWER = [
+  'Clear obstructions around and under the lift and be certain no people are around the lift.',
+  'Push UP button to raise the vehicle slightly, then unlock the safety device, lower vehicle by pushing release handle on the power unit.',
+  'Open the lifting arms out to the sides and retract the lifting arm to the shortest position.',
+  'Drive away the vehicle.',
 ]
 
 export function ManualStep() {
@@ -22,12 +50,70 @@ export function ManualStep() {
   return (
     <>
       <div className="bg-pitbox-surface border border-pitbox-border rounded-xl divide-y divide-pitbox-border mb-8">
-        {MANUAL_SECTIONS.map((section) => (
-          <div key={section.heading} className="p-6">
-            <h3 className="text-sm font-semibold text-pitbox-text mb-3">{section.heading}</h3>
-            <p className="text-sm text-[#737373] leading-relaxed">{section.body}</p>
+
+        {/* Shop Rules */}
+        <div className="p-6">
+          <h3 className="text-sm font-semibold text-pitbox-text mb-4">Safety in the Shop</h3>
+          <ol className="flex flex-col gap-2.5">
+            {SHOP_RULES.map((rule, i) => (
+              <li key={i} className="flex gap-3 text-sm text-[#737373] leading-relaxed">
+                <span className="shrink-0 w-5 text-right font-medium text-pitbox-muted">{i + 1}.</span>
+                <span>{rule}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        {/* Housekeeping */}
+        <div className="p-6">
+          <h3 className="text-sm font-semibold text-pitbox-text mb-4">Shop Housekeeping</h3>
+          <ul className="flex flex-col gap-2.5">
+            {HOUSEKEEPING.map((item, i) => (
+              <li key={i} className="flex gap-3 text-sm text-[#737373] leading-relaxed">
+                <span className="shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full bg-pitbox-amber" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Lift: Raise */}
+        <div className="p-6">
+          <h3 className="text-sm font-semibold text-pitbox-text mb-1">Lift Operation — Raising a Vehicle</h3>
+          <p className="text-xs text-pitbox-subtle mb-4">Read all instructions thoroughly before operating the lift. Failure to do so could lead to serious injury or death.</p>
+          <ol className="flex flex-col gap-2.5">
+            {LIFT_TO_RAISE.map((step, i) => (
+              <li key={i} className="flex gap-3 text-sm text-[#737373] leading-relaxed">
+                <span className="shrink-0 w-5 text-right font-medium text-pitbox-muted">{i + 1}.</span>
+                <span>{step}</span>
+              </li>
+            ))}
+          </ol>
+          <div className="mt-5 flex flex-col gap-3">
+            <div className="rounded-lg border border-yellow-600/40 bg-yellow-600/10 px-4 py-3 text-sm text-yellow-400 leading-relaxed">
+              <span className="font-bold uppercase tracking-wide mr-1">Warning:</span>
+              It is unsafe to work without locking the safety device after the vehicle has been raised. The vehicle may fall, potentially causing damage to the vehicle and lift, or injury and death to someone nearby.
+            </div>
+            <div className="rounded-lg border border-red-600/40 bg-red-600/10 px-4 py-3 text-sm text-red-400 leading-relaxed">
+              <span className="font-bold uppercase tracking-wide mr-1">Danger:</span>
+              When using the lifting points on the chassis recommended by the vehicle manufacturer, follow the instructions carefully. Failure to do so can make the vehicle unstable and fall, which can damage the vehicle and lift, and injure or kill anyone under the vehicle.
+            </div>
           </div>
-        ))}
+        </div>
+
+        {/* Lift: Lower */}
+        <div className="p-6">
+          <h3 className="text-sm font-semibold text-pitbox-text mb-4">Lift Operation — Lowering a Vehicle</h3>
+          <ol className="flex flex-col gap-2.5">
+            {LIFT_TO_LOWER.map((step, i) => (
+              <li key={i} className="flex gap-3 text-sm text-[#737373] leading-relaxed">
+                <span className="shrink-0 w-5 text-right font-medium text-pitbox-muted">{i + 1}.</span>
+                <span>{step}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+
       </div>
 
       <div className="border-t border-pitbox-surface-2 pt-8 flex flex-col gap-6">

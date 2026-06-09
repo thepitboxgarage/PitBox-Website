@@ -86,8 +86,8 @@ export function Footer() {
             © {new Date().getFullYear()} PitBox Inc. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <span className="text-xs text-pitbox-subtle hover:text-pitbox-subtle cursor-pointer transition-colors">Privacy Policy</span>
-            <span className="text-xs text-pitbox-subtle hover:text-pitbox-subtle cursor-pointer transition-colors">Terms of Service</span>
+            <Link to="/privacy-policy" className="text-xs text-pitbox-subtle hover:text-pitbox-text transition-colors">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="text-xs text-pitbox-subtle hover:text-pitbox-text transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

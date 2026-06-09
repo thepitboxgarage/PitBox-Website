@@ -9,20 +9,33 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsOfServiceRouteImport } from './routes/terms-of-service'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BookingCompleteRouteImport } from './routes/booking-complete'
 import { Route as BookRouteImport } from './routes/book'
 import { Route as BaysRouteImport } from './routes/bays'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as R404RouteImport } from './routes/404'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BookIndexRouteImport } from './routes/book.index'
 import { Route as BookWaiverRouteImport } from './routes/book.waiver'
 import { Route as BookManualRouteImport } from './routes/book.manual'
 
+const TermsOfServiceRoute = TermsOfServiceRouteImport.update({
+  id: '/terms-of-service',
+  path: '/terms-of-service',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -50,6 +63,11 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const R404Route = R404RouteImport.update({
+  id: '/404',
+  path: '/404',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -73,23 +91,29 @@ const BookManualRoute = BookManualRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/404': typeof R404Route
   '/about': typeof AboutRoute
   '/bays': typeof BaysRoute
   '/book': typeof BookRouteWithChildren
   '/booking-complete': typeof BookingCompleteRoute
   '/contact': typeof ContactRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/services': typeof ServicesRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
   '/book/manual': typeof BookManualRoute
   '/book/waiver': typeof BookWaiverRoute
   '/book/': typeof BookIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/404': typeof R404Route
   '/about': typeof AboutRoute
   '/bays': typeof BaysRoute
   '/booking-complete': typeof BookingCompleteRoute
   '/contact': typeof ContactRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/services': typeof ServicesRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
   '/book/manual': typeof BookManualRoute
   '/book/waiver': typeof BookWaiverRoute
   '/book': typeof BookIndexRoute
@@ -97,12 +121,15 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/404': typeof R404Route
   '/about': typeof AboutRoute
   '/bays': typeof BaysRoute
   '/book': typeof BookRouteWithChildren
   '/booking-complete': typeof BookingCompleteRoute
   '/contact': typeof ContactRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/services': typeof ServicesRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
   '/book/manual': typeof BookManualRoute
   '/book/waiver': typeof BookWaiverRoute
   '/book/': typeof BookIndexRoute
@@ -111,35 +138,44 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/404'
     | '/about'
     | '/bays'
     | '/book'
     | '/booking-complete'
     | '/contact'
+    | '/privacy-policy'
     | '/services'
+    | '/terms-of-service'
     | '/book/manual'
     | '/book/waiver'
     | '/book/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/404'
     | '/about'
     | '/bays'
     | '/booking-complete'
     | '/contact'
+    | '/privacy-policy'
     | '/services'
+    | '/terms-of-service'
     | '/book/manual'
     | '/book/waiver'
     | '/book'
   id:
     | '__root__'
     | '/'
+    | '/404'
     | '/about'
     | '/bays'
     | '/book'
     | '/booking-complete'
     | '/contact'
+    | '/privacy-policy'
     | '/services'
+    | '/terms-of-service'
     | '/book/manual'
     | '/book/waiver'
     | '/book/'
@@ -147,21 +183,38 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  R404Route: typeof R404Route
   AboutRoute: typeof AboutRoute
   BaysRoute: typeof BaysRoute
   BookRoute: typeof BookRouteWithChildren
   BookingCompleteRoute: typeof BookingCompleteRoute
   ContactRoute: typeof ContactRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   ServicesRoute: typeof ServicesRoute
+  TermsOfServiceRoute: typeof TermsOfServiceRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms-of-service': {
+      id: '/terms-of-service'
+      path: '/terms-of-service'
+      fullPath: '/terms-of-service'
+      preLoaderRoute: typeof TermsOfServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -197,6 +250,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/404': {
+      id: '/404'
+      path: '/404'
+      fullPath: '/404'
+      preLoaderRoute: typeof R404RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -246,12 +306,15 @@ const BookRouteWithChildren = BookRoute._addFileChildren(BookRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  R404Route: R404Route,
   AboutRoute: AboutRoute,
   BaysRoute: BaysRoute,
   BookRoute: BookRouteWithChildren,
   BookingCompleteRoute: BookingCompleteRoute,
   ContactRoute: ContactRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
   ServicesRoute: ServicesRoute,
+  TermsOfServiceRoute: TermsOfServiceRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
