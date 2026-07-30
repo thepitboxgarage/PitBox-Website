@@ -27,6 +27,14 @@ const SERVICE_PARAM_MAP: Record<string, string> = {
   storage: "Vehicle Storage",
 };
 
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+const EMAILJS_CONFIGURED = Boolean(
+  EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY,
+);
+
 const schema = z.object({
   name: z.string().min(2, "Name is required"),
   email: z.string().email("Valid email required"),
@@ -60,12 +68,29 @@ export function ContactSection({ service }: ContactSectionProps) {
 
   const onSubmit = async (data: FormData) => {
     setSubmitError("");
+
+    if (!EMAILJS_CONFIGURED) {
+      console.error(
+        "EmailJS is not configured — set VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID and VITE_EMAILJS_PUBLIC_KEY.",
+      );
+      setSubmitError(
+        `Message couldn't be sent. Please email us at ${FACILITY_EMAIL}.`,
+      );
+      return;
+    }
+
     try {
       const token = await recaptchaRef.current?.executeAsync();
       recaptchaRef.current?.reset();
+
+      if (!token) {
+        setSubmitError("Captcha verification failed. Please try again.");
+        return;
+      }
+
       await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
         {
           name: data.name,
           email: data.email,
@@ -73,14 +98,20 @@ export function ContactSection({ service }: ContactSectionProps) {
           message: data.message,
           "g-recaptcha-response": token,
         },
-        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY },
+        {
+          publicKey: EMAILJS_PUBLIC_KEY,
+          blockHeadless: true,
+          limitRate: { id: "contact", throttle: 15000 },
+        },
       );
       setSubmitted(true);
     } catch (err) {
+      console.error("EmailJS send failed:", err);
+      const status = (err as { status?: number })?.status;
       setSubmitError(
-        err instanceof Error
-          ? err.message
-          : "Something went wrong. Please try again.",
+        status === 429
+          ? "You've just sent a message. Please wait a moment before sending another."
+          : `Something went wrong. Please try again or email us at ${FACILITY_EMAIL}.`,
       );
     }
   };
